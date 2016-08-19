@@ -3,28 +3,8 @@
 # Any error will fail the script
 set -e
 
-source "lib/helpers.sh"
-
-# Require an input version to be passed as the first parameter to the script.
-INPUT_VERSION=$1
-if [ -z $INPUT_VERSION ]; then
-    echo "${RED}No version argument supplied.${NC}"
-	echo "Please pass the desired Xcode version as an input parameter. For example './xcunsign.sh 8.0'"
-    echo "TODO: Update this to use the current Xcode version if there is only one."
-	exit 1
-fi
-
-# Get the path to the specified version of Xcode
-XCODE_PATH=`xcode_app_path_for_version $INPUT_VERSION`
-if [ -z $XCODE_PATH ]; then
-	exit 1
-fi
-echo "Xcode version $INPUT_VERSION found in $XCODE_PATH"
-
-# Setup the paths that we'll be using
-BINARY_PATH="$XCODE_PATH/Contents/MacOS/Xcode"
-SIGNED_PATH="$BINARY_PATH.signed"
-UNSIGNED_PATH="$BINARY_PATH.unsigned"
+# Parse the command line input
+source "lib/input.sh"
 
 # If the app has not been unsigned yet, unsign it
 # Note: our check for signing is basic and is just checking to see

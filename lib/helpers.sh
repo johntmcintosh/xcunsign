@@ -1,7 +1,8 @@
+# Common helper functions for working with Xcode versions 
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' # No Color
-
 
 # Echo list of all installed Xcode versions 
 list_installed_xcode_versions() {
@@ -11,7 +12,6 @@ list_installed_xcode_versions() {
 	echo $VERSION >&2
 	done
 }
-
 
 # Echo path to Xcode version matching the version provided in the first calling argument
 xcode_app_path_for_version () {
