@@ -1,16 +1,20 @@
 #!/bin/sh
 
-# Any error will fail the script
-set -e
-
 # Parse the command line input
 source "lib/input.sh"
 
+# If the app is already signed, there's nothing that needs to be done
+./lib/verify_codesign.rb "$BINARY_PATH"
+if [ $? -eq 0 ]; then
+    echo "${GREEN}$BINARY_PATH is already signed.${NC}"
+    exit 0
+fi
+
 # Ensure that the app has a signed copy that can be restored
-# Note: our check for signing is basic and is just checking to see
-# that the *.signed copy of the binary is present in the directory.
-# We're not actually investigating the signature on the binary.
-if [ ! -f $SIGNED_PATH ]; then
+# If the return code of the verify_codesign call is 0, then
+# we have a legitimately signed binary.
+./lib/verify_codesign.rb "$SIGNED_PATH"
+if [ ! $? -eq 0 ]; then
     echo "${RED}There no file at ${SIGNED_PATH} to restore.${NC}"
     exit 1
 fi

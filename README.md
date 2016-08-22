@@ -18,6 +18,8 @@ Fastlane has an action called `verify_xcode` which can be run as part of your `F
 
 To unsign, call the script, passing in the version of Xcode that you want to unsign. The script will find the copy of Xcode in the `/Applications` directory with that version, and run [`unsign`](https://github.com/steakknife/unsign) on it. It will keep a copy of the original signed binary as `Xcode.signed` and then replace the `Xcode` binary with `Xcode.unsigned`.
 
+NOTE: When unsigning, the signed, original binary will be stored in an `artifacts/` directory located relative to this calling script. It's important to not delete this directory, otherwise you will not later be able to re-sign. 
+
 ```
 ./xcunsign.sh 8.0
 ```
@@ -27,6 +29,7 @@ To unsign, call the script, passing in the version of Xcode that you want to uns
  ```
 ./xcsign.sh 8.0
 ```
+
 
 ## Roadmap
 

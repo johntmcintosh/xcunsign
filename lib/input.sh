@@ -21,6 +21,7 @@ fi
 echo "Xcode version $INPUT_VERSION found in $XCODE_PATH"
 
 # Setup the paths that we'll be using
+ARTIFACT_DIR="artifacts"
 BINARY_PATH="$XCODE_PATH/Contents/MacOS/Xcode"
-SIGNED_PATH="$BINARY_PATH.signed"
-UNSIGNED_PATH="$BINARY_PATH.unsigned"
+SIGNED_PATH="$ARTIFACT_DIR/$INPUT_VERSION/Xcode.signed"
+UNSIGNED_PATH="$ARTIFACT_DIR/$INPUT_VERSION/Xcode.unsigned"
