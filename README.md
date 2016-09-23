@@ -1,8 +1,8 @@
-# xcunsign/xcsign
+# xcunsign/xcrestore
 
 ## About
 
-`xcsign` and `xcunsign` are two scripts that allow for easy swapping between signed and unsigned copies of Xcode.
+`xcunsign` and `xcrestore` are two scripts that allow for easy swapping between signed and unsigned copies of Xcode.
 
 ## Why?
 
@@ -27,14 +27,14 @@ NOTE: When unsigning, the signed, original binary will be stored in an `artifact
  To restore the signed binary, `Xcode` will be restored to the copy in `Xcode.signed`.
 
  ```
-./xcsign.sh 8.0
+./xcrestore.sh 8.0
 ```
 
 
 ## Roadmap
 
 - If there is only one version of Xcode installed, it shouldn't be necessary to pass in the version.
-- Implement a fastlane plugin to xcsign before the build 
+- Implement a fastlane plugin to xcrestore before the build 
 
 ## Credits
 
