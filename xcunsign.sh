@@ -25,3 +25,8 @@ echo "Setting $BINARY_PATH to unsigned copy"
 rm "$BINARY_PATH"
 cp -p "$UNSIGNED_PATH" "$BINARY_PATH"
 echo "${GREEN}Xcode $INPUT_VERSION has been unsigned.${NC}"
+
+# Set Xcode's app icon to the unsigned icon
+./bin/fileicon set $XCODE_PATH ./resources/XcodeUnsigned.png
+killall Finder
+killall Dock

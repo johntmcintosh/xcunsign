@@ -24,3 +24,8 @@ echo "Setting $BINARY_PATH to signed copy"
 rm "$BINARY_PATH"
 cp -p "$SIGNED_PATH" "$BINARY_PATH"
 echo "${GREEN}Xcode $INPUT_VERSION has been re-signed.${NC}"
+
+# Restore Xcode's app icon to the standard icon
+./bin/fileicon rm $XCODE_PATH
+killall Finder
+killall Dock

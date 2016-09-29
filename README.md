@@ -38,7 +38,7 @@ NOTE: When unsigning, the signed, original binary will be stored in an `artifact
 
 ## Credits
 
-Special thanks to [steakknife's unsign](https://github.com/steakknife/unsign).
+Special thanks to [steakknife's unsign](https://github.com/steakknife/unsign) and [mklement0's fileicon](https://github.com/mklement0/fileicon).
 
 ## License
 
