@@ -4,13 +4,7 @@
 
 # Get the source directory to use for relative paths when referencing other scripts
 CALLING_DIR="${BASH_SOURCE%/*}"
-BINARY=`readlink "$CALLING_DIR/xcunsign"`
-if [ -n "$BINARY" ]; then
-    SOURCE_DIR=$(dirname $BINARY)
-else
-    SOURCE_DIR=$CALLING_DIR
-fi
-ROOT_DIR=$(dirname $SOURCE_DIR)
+ROOT_DIR=$(dirname $CALLING_DIR)
 
 # Include helpers
 source "$ROOT_DIR/lib/helpers.sh"
