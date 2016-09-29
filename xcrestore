@@ -1,4 +1,8 @@
 #!/bin/sh
+###
+# Home page: https://github.com/johntmcintosh/xcunsign/
+# Author:   John T McIntosh (http://johntmcintosh.com)
+###
 
 # Get the source directory to use for relative paths when referencing other scripts
 CALLING_DIR="${BASH_SOURCE%/*}"
