@@ -14,6 +14,19 @@ In light of the security benefits of using a signed Xcode, I would recommend swa
 
 Fastlane has an action called `verify_xcode` which can be run as part of your `Fastfile` to ensure that the Xcode being used for the build is properly signed.
 
+## Installation
+
+To install the scripts, clone or download the repo, and then you can choose one of the following:
+
+1. Call the scripts directly
+2. Add the repo directory to your PATH
+3. Symlink the scripts into a directory in your path
+    
+    ```
+    ln -s /usr/local/bin/xcunsign <repo_directory>/xcunsign
+    ln -s /usr/local/bin/xcrestore <repo_directory>/xcrestore
+    ``` 
+
 ## Usage
 
 To unsign, call the script, passing in the version of Xcode that you want to unsign. The script will find the copy of Xcode in the `/Applications` directory with that version, and run [`unsign`](https://github.com/steakknife/unsign) on it. It will keep a copy of the original signed binary as `Xcode.signed` and then replace the `Xcode` binary with `Xcode.unsigned`.
@@ -21,13 +34,13 @@ To unsign, call the script, passing in the version of Xcode that you want to uns
 NOTE: When unsigning, the signed, original binary will be stored in an `artifacts/` directory located relative to this calling script. It's important to not delete this directory, otherwise you will not later be able to re-sign. 
 
 ```
-./xcunsign.sh 8.0
+xcunsign 8.0
 ```
  
  To restore the signed binary, `Xcode` will be restored to the copy in `Xcode.signed`.
 
  ```
-./xcrestore.sh 8.0
+xcrestore 8.0
 ```
 
 
