@@ -1,5 +1,7 @@
 # xcunsign/xcrestore
 
+<img width="180px" src="./resources/readme_XcodeUnsigned.png" />
+
 ## About
 
 `xcunsign` and `xcrestore` are two scripts that allow for easy swapping between signed and unsigned copies of Xcode.
@@ -29,9 +31,9 @@ To install the scripts, clone or download the repo, and then you can choose one 
 
 ## Usage
 
-To unsign, call the script, passing in the version of Xcode that you want to unsign. The script will find the copy of Xcode in the `/Applications` directory with that version, and run [`unsign`](https://github.com/steakknife/unsign) on it. It will keep a copy of the original signed binary as `Xcode.signed` and then replace the `Xcode` binary with `Xcode.unsigned`.
+To unsign, call the script, passing in the version of Xcode that you want to unsign. The script will find the copy of Xcode in the `/Applications` directory with that version, run [`unsign`](https://github.com/steakknife/unsign) on it, and keep a copy of the original signed binary that can be used to restore later. It also modifies Xcode's icon to indicate whether the app is currently signed or not.
 
-NOTE: When unsigning, the signed, original binary will be stored in an `artifacts/` directory located relative to this calling script. It's important to not delete this directory, otherwise you will not later be able to re-sign. 
+NOTE: When unsigning, the signed, original binary will be stored as `artifacts/Xcode.signed` in a directory located relative to this calling script. It's important to not delete this directory, otherwise you will not later be able to re-sign and will have to re-download Xcode to have a signed copy.
 
 ```
 xcunsign 8.0
