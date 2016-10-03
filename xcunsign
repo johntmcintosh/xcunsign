@@ -28,17 +28,21 @@ fi
 # If the app has not been unsigned yet, unsign it.
 # NOTE: `ditto` is only available on macOS, and it allows us to do a
 # copy, while creating any intermediate directories that do not exist.
-echo "The app is currently signed."
-echo "Copying standard binary to $SIGNED_PATH"
-ditto $BINARY_PATH $SIGNED_PATH
+# echo "The app is currently signed."
+# echo "Copying standard binary to $SIGNED_PATH"
+# ditto $BINARY_PATH $SIGNED_PATH
 
-echo "Executing unsign now..."
+# echo "Executing unsign now..."
+echo "The app is currently signed. Executing unsign now..."
 $ROOT_DIR/bin/unsign $BINARY_PATH $UNSIGNED_PATH
 
-# Delete the existing binary, and replace it with the unsigned copy
-echo "Setting $BINARY_PATH to unsigned copy"
-rm "$BINARY_PATH"
-cp -p "$UNSIGNED_PATH" "$BINARY_PATH"
+# Rename the original binary so it can later be restored.
+echo "Renaming Xcode to Xcode.signed."
+mv "$BINARY_PATH" "$SIGNED_PATH"
+
+# Rename the unsigned binary so it will be primary
+echo "Renaming Xcode.unsigned to Xcode."
+mv "$UNSIGNED_PATH" "$BINARY_PATH"
 
 # Set Xcode's app icon to the unsigned icon
 $ROOT_DIR/bin/fileicon set $XCODE_PATH $ROOT_DIR/resources/XcodeUnsigned.png

@@ -34,9 +34,12 @@ if ! $ROOT_DIR/lib/verify_codesign.rb "$SIGNED_PATH"; then
 fi
 
 # Delete the existing binary, and replace it with the signed copy
-echo "Setting $BINARY_PATH to signed copy"
+echo "Deleting unsigned Xcode binary."
 rm "$BINARY_PATH"
-cp -p "$SIGNED_PATH" "$BINARY_PATH"
+
+echo "Setting $BINARY_PATH to signed copy"
+mv "$SIGNED_PATH" "$BINARY_PATH"
+
 echo "Signed binary restored."
 
 # Restore Xcode's app icon to the standard icon
