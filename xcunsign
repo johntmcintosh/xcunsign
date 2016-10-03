@@ -25,13 +25,6 @@ if ! $ROOT_DIR/lib/verify_codesign.rb "$BINARY_PATH"; then
     exit 0
 fi
 
-# If the app has not been unsigned yet, unsign it.
-# NOTE: `ditto` is only available on macOS, and it allows us to do a
-# copy, while creating any intermediate directories that do not exist.
-# echo "The app is currently signed."
-# echo "Copying standard binary to $SIGNED_PATH"
-# ditto $BINARY_PATH $SIGNED_PATH
-
 # echo "Executing unsign now..."
 echo "The app is currently signed. Executing unsign now..."
 $ROOT_DIR/bin/unsign $BINARY_PATH $UNSIGNED_PATH
