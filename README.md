@@ -25,8 +25,8 @@ To install the scripts, clone or download the repo, and then you can choose one 
 3. Symlink the scripts into a directory in your path
     
     ```
-    ln -s /usr/local/bin/xcunsign <repo_directory>/xcunsign
-    ln -s /usr/local/bin/xcrestore <repo_directory>/xcrestore
+    ln -s <repo_directory>/xcunsign /usr/local/bin/xcunsign
+    ln -s <repo_directory>/xcrestore /usr/local/bin/xcrestore
     ``` 
 
 ## Usage
