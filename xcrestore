@@ -4,8 +4,14 @@
 # Author:   John T McIntosh (http://johntmcintosh.com)
 ###
 
+MAC_OS_VERSION=$(sw_vers -productVersion)
+MAC_OS_SIERRA="10.12"
+if [ $(bc <<< "$MAC_OS_VERSION < $MAC_OS_SIERRA") -eq 1 ]
+    then
+echo "MacOS version checked and error handling activated"
 set -o errexit # Exit if any statement returns a non-true return value (non-zero).
 set -o nounset # Exit on use of an uninitialized variable
+fi
 
 # Get the source directory to use for relative paths when referencing other scripts
 CALLING_DIR="${BASH_SOURCE%/*}"
