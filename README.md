@@ -12,7 +12,7 @@ Xcode 8 disables the ability to run 3rd party plugins (such as [Alcatraz]), in f
 
 ## Security
 
-In light of the security benefits of using a signed Xcode, I would recommend swapping back to the signed version before any deployment builds are generated. These scripts can be integrated with [fastlane](https://fastlane.tools) to ensure that all deployemnt builds are generated from the signed Xcode, while you continue to use the unsigned version for access to plugins during development.
+In light of the security benefits of using a signed Xcode, I would recommend swapping back to the signed version before any deployment builds are generated. These scripts can be integrated with [fastlane](https://fastlane.tools) to ensure that all deployment builds are generated from the signed Xcode, while you continue to use the unsigned version for access to plugins during development.
 
 Fastlane has an action called `verify_xcode` which can be run as part of your `Fastfile` to ensure that the Xcode being used for the build is properly signed.
 
